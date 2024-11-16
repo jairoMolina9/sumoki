@@ -18,6 +18,14 @@ function App() {
           <Card img={Pancake} />
           <Card img={Yogurt} />
           <Card img={Pancake} />
+          <Card img={Yogurt} />
+          <Card img={Pancake} />
+          <Card img={Yogurt} />
+          <Card img={Pancake} />
+          <Card img={Yogurt} />
+          <Card img={Pancake} />
+          <Card img={Yogurt} />
+          <Card img={Pancake} />
           {/* Add more <Card /> components as needed */}
         </div>
       </div>
