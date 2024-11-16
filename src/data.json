@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "img": "./assets/yogurt.jpeg",
+    "title": "Scoops",
+    "price": "$5",
+    "description": "Starting From"
+  },
+  {
+    "id": 2,
+    "img": "./assets/pancake.jpeg",
+    "title": "Pancakes",
+    "price": "$6",
+    "description": "Starting From"
+  },
+  {
+    "id": 3,
+    "img": "./assets/yogurt.jpeg",
+    "title": "Scoops",
+    "price": "$5",
+    "description": "Starting From"
+  },
+  {
+    "id": 4,
+    "img": "./assets/pancake.jpeg",
+    "title": "Pancakes",
+    "price": "$6",
+    "description": "Starting From"
+  }
+]
