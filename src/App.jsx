@@ -12,7 +12,7 @@ function App() {
       {/* Main content container with additional top margin */}
       <div className="w-full max-w-screen-lg px-4 mt-24 flex justify-center">
         {/* Centered grid container */}
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
           {cardData.map((item) => (
             <Card
               key={item.id}
