@@ -52,7 +52,7 @@ function App() {
         price={modalContent.price}
       />
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
