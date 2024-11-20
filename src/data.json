@@ -1,142 +1,178 @@
-[
-  {
-    "id": 1,
-    "img": "https://images.pexels.com/photos/5903234/pexels-photo-5903234.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    "title": "Cheesy Pizza",
-    "price": "$12",
-    "description": "Hot and Fresh"
-  },
-  {
-    "id": 2,
-    "img": "https://images.pexels.com/photos/5253032/pexels-photo-5253032.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    "title": "Spaghetti Delight",
-    "price": "$15",
-    "description": "Served with Garlic Bread"
-  },
-  {
+{
+  "Entrees": [
+    {
+      "id": 1,
+      "img": "https://images.pexels.com/photos/19786214/pexels-photo-19786214/free-photo-of-pizza-slices-with-sausages.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "title": "Cheesy Pizza",
+      "price": "$12",
+      "description": "Hot and Fresh"
+    },
+    {
+      "id": 2,
+      "img": "https://images.pexels.com/photos/5253032/pexels-photo-5253032.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "title": "Spaghetti Delight",
+      "price": "$15",
+      "description": "Served with Garlic Bread"
+    },
+    {
     "id": 3,
-    "img": "https://images.pexels.com/photos/29455642/pexels-photo-29455642/free-photo-of-delicious-gourmet-grilled-burger-with-bacon.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    "title": "Burger Bliss",
-    "price": "$10",
-    "description": "With Crispy Fries"
+    "img": "https://images.pexels.com/photos/842142/pexels-photo-842142.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "title": "Grilled Salmon",
+    "price": "$18",
+    "description": "Served with Lemon Butter Sauce"
   },
   {
     "id": 4,
-    "img": "https://images.pexels.com/photos/7613557/pexels-photo-7613557.jpeg?auto=compress&cs=tinysrgb&w=800",
-    "title": "Taco Fiesta",
-    "price": "$8",
-    "description": "Stuffed to Perfection"
+    "img": "https://images.pexels.com/photos/12116169/pexels-photo-12116169.png?auto=compress&cs=tinysrgb&w=800",
+    "title": "Chicken Parmesan",
+    "price": "$16",
+    "description": "Crispy Chicken with Marinara and Cheese"
   },
   {
     "id": 5,
-    "img": "https://images.pexels.com/photos/60616/fried-chicken-chicken-fried-crunchy-60616.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    "title": "Chicken Nuggets",
-    "price": "$7",
-    "description": "Crispy and Delicious"
+    "img": "https://images.pexels.com/photos/6605397/pexels-photo-6605397.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "title": "Classic Beef Burger",
+    "price": "$14",
+    "description": "Juicy Patty with Lettuce, Tomato, and Pickles"
   },
   {
     "id": 6,
-    "img": "https://images.pexels.com/photos/842142/pexels-photo-842142.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    "title": "Grilled Salmon",
-    "price": "$18",
-    "description": "With Lemon Butter Sauce"
+    "img": "https://images.pexels.com/photos/10695966/pexels-photo-10695966.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "title": "Vegetable Stir-fry",
+    "price": "$13",
+    "description": "Fresh Veggies Tossed in Savory Sauce"
   },
   {
     "id": 7,
-    "img": "https://images.pexels.com/photos/13159772/pexels-photo-13159772.jpeg?auto=compress&cs=tinysrgb&w=800",
-    "title": "Garden Salad",
-    "price": "$9",
-    "description": "Fresh and Healthy"
-  },
-  {
+    "img": "https://images.pexels.com/photos/5029867/pexels-photo-5029867.png?auto=compress&cs=tinysrgb&w=800",
+    "title": "Shrimp Tacos",
+    "price": "$17",
+    "description": "Topped with Avocado and Cilantro Lime Sauce"
+  }
+  ],
+  "Main": [
+    {
     "id": 8,
-    "img": "https://images.pexels.com/photos/27819685/pexels-photo-27819685/free-photo-of-a-chocolate-cake-with-ice-cream-and-strawberries.jpeg?auto=compress&cs=tinysrgb&w=800",
-    "title": "Chocolate Lava Cake",
-    "price": "$6",
-    "description": "Melts in Your Mouth"
+    "img": "https://images.pexels.com/photos/11531908/pexels-photo-11531908.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "title": "Grilled Ribeye Steak",
+    "price": "$25",
+    "description": "Juicy and Tender, Served with Mashed Potatoes"
   },
   {
     "id": 9,
-    "img": "https://images.pexels.com/photos/3622477/pexels-photo-3622477.jpeg?auto=compress&cs=tinysrgb&w=800",
-    "title": "Shrimp Tempura",
-    "price": "$14",
-    "description": "Light and Crispy"
+    "img": "https://images.pexels.com/photos/2338407/pexels-photo-2338407.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "title": "Roast Chicken",
+    "price": "$20",
+    "description": "Herb-Infused, Served with Seasonal Vegetables"
   },
   {
     "id": 10,
-    "img": "https://images.pexels.com/photos/29422833/pexels-photo-29422833/free-photo-of-delicious-tagliatelle-with-tomato-sauce-and-bacon.jpeg?auto=compress&cs=tinysrgb&w=800",
-    "title": "Pasta Primavera",
-    "price": "$13",
-    "description": "With Seasonal Vegetables"
+    "img": "https://images.pexels.com/photos/16743489/pexels-photo-16743489/free-photo-of-paella-served-in-wok.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "title": "Seafood Paella",
+    "price": "$23",
+    "description": "A Spanish Classic with Fresh Seafood and Saffron Rice"
   },
   {
     "id": 11,
-    "img": "https://images.pexels.com/photos/2664216/pexels-photo-2664216.jpeg?auto=compress&cs=tinysrgb&w=800",
-    "title": "Ramen Bowl",
-    "price": "$11",
-    "description": "Rich and Flavorful"
+    "img": "https://images.pexels.com/photos/4162496/pexels-photo-4162496.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "title": "Vegetarian Lasagna",
+    "price": "$18",
+    "description": "Layered with Fresh Veggies, Cheese, and Marinara Sauce"
   },
   {
     "id": 12,
-    "img": "https://images.pexels.com/photos/27643032/pexels-photo-27643032/free-photo-of-a-steak-and-fries-on-a-tray-with-a-fork.jpeg?auto=compress&cs=tinysrgb&w=800",
-    "title": "Steak Platter",
-    "price": "$22",
-    "description": "Cooked to Perfection"
+    "img": "https://images.pexels.com/photos/323682/pexels-photo-323682.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "title": "Lamb Chops",
+    "price": "$28",
+    "description": "Served with Mint Sauce and Roasted Potatoes"
   },
   {
     "id": 13,
-    "img": "https://images.pexels.com/photos/7138913/pexels-photo-7138913.jpeg?auto=compress&cs=tinysrgb&w=800",
-    "title": "Vegetable Stir-Fry",
-    "price": "$10",
-    "description": "Colorful and Delicious"
-  },
-  {
-    "id": 14,
-    "img": "https://images.pexels.com/photos/24182618/pexels-photo-24182618/free-photo-of-meat-with-sauce.jpeg?auto=compress&cs=tinysrgb&w=800",
-    "title": "Buffalo Wings",
-    "price": "$12",
-    "description": "Spicy and Tangy"
-  },
-  {
-    "id": 15,
-    "img": "https://images.pexels.com/photos/11722942/pexels-photo-11722942.jpeg?auto=compress&cs=tinysrgb&w=800",
-    "title": "Sushi Platter",
-    "price": "$20",
-    "description": "Assorted Delicacies"
-  },
-  {
-    "id": 16,
-    "img": "https://images.pexels.com/photos/2586924/pexels-photo-2586924.jpeg?auto=compress&cs=tinysrgb&w=800",
-    "title": "Ice Cream Sundae",
-    "price": "$5",
-    "description": "Loaded with Toppings"
-  },
-  {
-    "id": 17,
-    "img": "https://images.pexels.com/photos/13294537/pexels-photo-13294537.jpeg?auto=compress&cs=tinysrgb&w=800",
-    "title": "Chicken Alfredo",
-    "price": "$14",
-    "description": "Creamy and Savory"
-  },
-  {
-    "id": 18,
-    "img": "https://images.pexels.com/photos/28996259/pexels-photo-28996259/free-photo-of-delicious-bbq-ribs-with-potatoes-and-peppers.jpeg?auto=compress&cs=tinysrgb&w=800",
-    "title": "BBQ Ribs",
-    "price": "$19",
-    "description": "Smoky and Tender"
-  },
-  {
-    "id": 19,
-    "img": "https://images.pexels.com/photos/4109234/pexels-photo-4109234.jpeg?auto=compress&cs=tinysrgb&w=800",
-    "title": "French Fries",
-    "price": "$4",
-    "description": "Golden and Crispy"
-  },
-  {
-    "id": 20,
-    "img": "https://images.pexels.com/photos/4040695/pexels-photo-4040695.jpeg?auto=compress&cs=tinysrgb&w=800",
-    "title": "Cheesecake Slice",
-    "price": "$7",
-    "description": "Rich and Creamy"
+    "img": "https://images.pexels.com/photos/18015004/pexels-photo-18015004/free-photo-of-roast-cut-roast-beef-with-sauce-and-vegetables.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "title": "Pork Tenderloin",
+    "price": "$22",
+    "description": "Glazed with Honey and Mustard, Served with Steamed Broccoli"
   }
-]
+],
+"Desserts": [
+    {
+      "id": 8,
+      "img": "https://images.pexels.com/photos/27819685/pexels-photo-27819685/free-photo-of-a-chocolate-cake-with-ice-cream-and-strawberries.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "title": "Chocolate Lava Cake",
+      "price": "$6",
+      "description": "Melts in Your Mouth"
+    },
+    {
+      "id": 20,
+      "img": "https://images.pexels.com/photos/1126359/pexels-photo-1126359.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "title": "Cheesecake Slice",
+      "price": "$7",
+      "description": "Rich and Creamy"
+    },
+    {
+    "id": 21,
+    "img": "https://images.pexels.com/photos/1294943/pexels-photo-1294943.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "title": "Vanilla Ice Cream",
+    "price": "$5",
+    "description": "Classic and Creamy"
+  },
+  {
+    "id": 22,
+    "img": "https://images.pexels.com/photos/19580189/pexels-photo-19580189/free-photo-of-sponge-cake-with-strawberries.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "title": "Strawberry Shortcake",
+    "price": "$6",
+    "description": "Sweet and Refreshing"
+  },
+  {
+    "id": 23,
+    "img": "https://images.pexels.com/photos/2955816/pexels-photo-2955816.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "title": "Apple Pie",
+    "price": "$7",
+    "description": "Warm and Spiced with Cinnamon"
+  },
+  {
+    "id": 24,
+    "img": "https://images.pexels.com/photos/18454368/pexels-photo-18454368/free-photo-of-cream-cake-with-cocoa.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "title": "Tiramisu",
+    "price": "$8",
+    "description": "Rich Coffee-Infused Delight"
+  }
+  ],
+  "Drinks": [
+     {
+      "id": 33,
+      "img": "https://images.pexels.com/photos/1484678/pexels-photo-1484678.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "title": "Iced Tea",
+      "price": "$3",
+      "description": "Refreshing and Cool"
+    },
+    {
+      "id": 34,
+      "img": "https://images.pexels.com/photos/2109099/pexels-photo-2109099.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "title": "Lemonade",
+      "price": "$4",
+      "description": "Freshly Squeezed"
+    },
+    {
+  "id": 35,
+  "img": "https://images.pexels.com/photos/2113915/pexels-photo-2113915.jpeg?auto=compress&cs=tinysrgb&w=800",
+  "title": "Mango Smoothie",
+  "price": "$5",
+  "description": "Creamy and Tropical"
+},
+{
+  "id": 36,
+  "img": "https://images.pexels.com/photos/17516403/pexels-photo-17516403/free-photo-of-a-glass-of-coffee-with-milk-being-poured-into-it.jpeg?auto=compress&cs=tinysrgb&w=800",
+  "title": "Cold Brew Coffee",
+  "price": "$4",
+  "description": "Bold and Smooth"
+},
+{
+  "id": 37,
+  "img": "https://images.pexels.com/photos/9009821/pexels-photo-9009821.jpeg?auto=compress&cs=tinysrgb&w=800",
+  "title": "Sparkling Water",
+  "price": "$2",
+  "description": "Light and Fizzy"
+}
+  ]
+}
