@@ -1,9 +1,12 @@
 import React from "react";
 import { FaHeart } from "react-icons/fa";
 
-function Card({ img, title, description, price }) {
+function Card({ img, title, description, price, onClick }) {
   return (
-    <div className="w-36 h-60 rounded-lg shadow-lg bg-white p-2 flex flex-col items-center relative">
+    <div
+      className="w-36 h-60 rounded-lg shadow-lg bg-white p-2 flex flex-col items-center relative cursor-pointer"
+      onClick={onClick}
+    >
       <button className="absolute top-2 right-2 text-gray-400 hover:text-red-500">
         <FaHeart />
       </button>
