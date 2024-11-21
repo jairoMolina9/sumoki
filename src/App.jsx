@@ -26,7 +26,7 @@ function App() {
       <div className="w-full max-w-screen-lg px-4 mt-24">
         {Object.entries(cardData).map(([category, items]) => (
           <div key={category} className="mb-12">
-            <h1 className="text-2xl font-bold mb-6">{category}</h1>
+            <h1 className="text-2xl font-bold mb-6 underline ">{category}</h1>
             <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 justify-items-center">
               {items.map((item) => (
                 <Card
