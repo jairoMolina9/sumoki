@@ -4,12 +4,9 @@ import { FaHeart } from "react-icons/fa";
 function Card({ img, title, description, price, onClick }) {
   return (
     <div
-      className="w-48 h-80 rounded-lg shadow-lg bg-white p-4 flex flex-col items-center relative cursor-pointer"
+      className="w-48 h-75 rounded-lg shadow-lg bg-white p-4 flex flex-col items-center relative cursor-pointer"
       onClick={onClick}
     >
-      <button className="absolute top-2 right-2 text-gray-400 hover:text-red-500">
-        <FaHeart />
-      </button>
       <div className="rounded-full overflow-hidden bg-gray-100 w-32 h-32 flex items-center justify-center mb-4">
         <img src={img} alt={title} className="w-full h-full object-cover" />
       </div>
