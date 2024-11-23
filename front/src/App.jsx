@@ -28,7 +28,7 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col items-center min-h-screen">
+    <div className="flex flex-col items-center min-h-screen bg-gray-900">
       <Navbar />
 
       <div className="w-full max-w-screen-lg px-4 mt-24">
@@ -38,8 +38,10 @@ function App() {
 
           return (
             <div key={category} className="mb-12">
-              <h1 className="text-2xl font-bold mb-6 underline">{category}</h1>
-              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 justify-items-center">
+              <h1 className="text-2xl font-bold mb-6 underline text-white">
+                {category}
+              </h1>
+              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 justify-items-center ">
                 {visibleItems.map((item) => (
                   <Card
                     key={item.id}
