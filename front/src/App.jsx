@@ -28,7 +28,7 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col items-center min-h-screen bg-gray-900">
+    <div className="flex flex-col items-center min-h-screen bg-black">
       <Navbar />
 
       <div className="w-full max-w-screen-lg px-4 mt-24">
