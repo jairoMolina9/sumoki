@@ -9,4 +9,4 @@ const MenuCategorySchema = new mongoose.Schema({
   items: [{ type: mongoose.Schema.Types.ObjectId, ref: 'MenuItem' }] // Reference to MenuItem, // Embed menu items
 });
 
-module.exports = mongoose.model('MenuCategory', MenuCategorySchema);;
+module.exports = mongoose.model('MenuCategory', MenuCategorySchema);

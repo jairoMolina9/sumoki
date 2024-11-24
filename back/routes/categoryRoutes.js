@@ -34,10 +34,22 @@ router.get('/:categoryId/items', async (req, res) => {
 router.post('/', async (req, res) => {
   const { name } = req.body;
 
+  if (!name) {
+    return res.status(400).json({ error: "Category name is required" });
+  }
+
+  console.log(req.body);
   try {
+    const existingCategory = await Category.findOne({ name });
+    if (existingCategory) {
+      return res
+        .status(400)
+        .json({ error: "Category already exists", category: existingCategory });
+    }
+
     const newCategory = new Category({ name });
     await newCategory.save();
-    res.json(newCategory);
+    res.status(201).json({error: "Category already exists", category: newCategory});
   } catch (err) {
     res.status(500).send('Server Error');
   }
