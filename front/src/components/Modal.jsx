@@ -5,7 +5,7 @@ function Modal({ isOpen, onClose, img, title, description, price }) {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="relative bg-gray-800 rounded-lg shadow-lg p-6 w-80 sm:w-96">
+      <div className="relative bg-zinc-900 rounded-lg shadow-lg p-6 w-80 sm:w-96">
         {/* Close Button */}
         <button
           className="absolute top-3 right-3 focus:outline-none text-2xl"
