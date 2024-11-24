@@ -1,25 +1,56 @@
 import React from "react";
-import { FaSearch, FaSlidersH } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
-function Navbar() {
+const Navbar = () => {
   return (
-    <div className="fixed top-4 left-1/2 transform -translate-x-1/2 w-11/12 max-w-md bg-white rounded-full shadow-lg flex items-center p-2 z-50">
-      {/* Search Input */}
-      <div className="flex items-center flex-grow bg-gray-100 rounded-full px-4 py-2">
-        <input
-          type="text"
-          placeholder="Search your food"
-          className="bg-transparent outline-none w-full text-gray-700 placeholder-gray-400"
-        />
-        <FaSearch className="text-gray-500 ml-2" />
-      </div>
+    <div>
+      <nav className="bg-white shadow dark:bg-black">
+        <div className="container flex items-center justify-center p-6 mx-auto text-gray-600 capitalize dark:text-gray-300">
+          <Link
+            to="/"
+            className="text-gray-800 dark:text-gray-200 border-b-2 border-blue-500 mx-1.5 sm:mx-6"
+          >
+            Home
+          </Link>
 
-      {/* Filter Icon */}
-      <button className="ml-3 bg-gray-100 rounded-full p-2 text-gray-500 hover:text-black">
-        <FaSlidersH />
-      </button>
+          <Link
+            to="/menu"
+            className="border-b-2 border-transparent hover:text-gray-800 dark:hover:text-gray-200 hover:border-blue-500 mx-1.5 sm:mx-6"
+          >
+            Menu
+          </Link>
+
+          <Link
+            to="/info"
+            className="border-b-2 border-transparent hover:text-gray-800 dark:hover:text-gray-200 hover:border-blue-500 mx-1.5 sm:mx-6"
+          >
+            Info
+          </Link>
+
+          <Link
+            to="/careers"
+            className="border-b-2 border-transparent hover:text-gray-800 dark:hover:text-gray-200 hover:border-blue-500 mx-1.5 sm:mx-6"
+          >
+            Careers
+          </Link>
+
+          <Link
+            to="/reservation"
+            className="border-b-2 border-transparent hover:text-gray-800 dark:hover:text-gray-200 hover:border-blue-500 mx-1.5 sm:mx-6"
+          >
+            Reservation
+          </Link>
+
+          <Link
+            to="/egift-card"
+            className="border-b-2 border-transparent hover:text-gray-800 dark:hover:text-gray-200 hover:border-blue-500 mx-1.5 sm:mx-6"
+          >
+            E-Gift Card
+          </Link>
+        </div>
+      </nav>
     </div>
   );
-}
+};
 
 export default Navbar;
