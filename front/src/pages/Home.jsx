@@ -2,7 +2,7 @@ import React from "react";
 
 const Home = () => {
   return (
-    <div className="bg-white">
+    <div className="">
       <div className="grid grid-cols-2 gap-0">
         {/* Row 1: Left taller, right shorter */}
         <div>
