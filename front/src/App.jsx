@@ -10,6 +10,8 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home.jsx";
 import Login from "./pages/Login.jsx";
 import { Menu } from "./pages/Menu.jsx";
+import Careers from "./pages/Careers.jsx";
+import Info from "./pages/Info.jsx";
 
 const App = () => {
   return (
@@ -34,6 +36,8 @@ const AppContent = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/menu" element={<Menu />} />
+        <Route path="/careers" element={<Careers />} />
+        <Route path="/info" element={<Info />} />
       </Routes>
       {!shouldHideNavbarAndFooter && <Footer />}
     </div>
