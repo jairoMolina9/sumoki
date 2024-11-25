@@ -54,8 +54,8 @@ const Navbar = () => {
             to="/"
             className={`${
               isActive("/")
-                ? "text-gray-800 dark:text-gray-200 border-b-2 border-blue-500"
-                : "hover:text-gray-800 dark:hover:text-gray-200 hover:border-blue-500"
+                ? "text-gray-800 dark:text-gray-200 border-b-2 border-white"
+                : "hover:text-gray-800 dark:hover:text-gray-200 hover:border-white"
             } block md:inline-block px-4 py-2 md:p-0`}
           >
             Home
@@ -64,8 +64,8 @@ const Navbar = () => {
             to="/menu"
             className={`${
               isActive("/menu")
-                ? "text-gray-800 dark:text-gray-200 border-b-2 border-blue-500"
-                : "hover:text-gray-800 dark:hover:text-gray-200 hover:border-blue-500"
+                ? "text-gray-800 dark:text-gray-200 border-b-2 border-white"
+                : "hover:text-gray-800 dark:hover:text-gray-200 hover:border-white"
             } block md:inline-block px-4 py-2 md:p-0`}
           >
             Menu
@@ -74,8 +74,8 @@ const Navbar = () => {
             to="/info"
             className={`${
               isActive("/info")
-                ? "text-gray-800 dark:text-gray-200 border-b-2 border-blue-500"
-                : "hover:text-gray-800 dark:hover:text-gray-200 hover:border-blue-500"
+                ? "text-gray-800 dark:text-gray-200 border-b-2 border-white"
+                : "hover:text-gray-800 dark:hover:text-gray-200 hover:border-white"
             } block md:inline-block px-4 py-2 md:p-0`}
           >
             Info
@@ -84,28 +84,24 @@ const Navbar = () => {
             to="/careers"
             className={`${
               isActive("/careers")
-                ? "text-gray-800 dark:text-gray-200 border-b-2 border-blue-500"
-                : "hover:text-gray-800 dark:hover:text-gray-200 hover:border-blue-500"
+                ? "text-gray-800 dark:text-gray-200 border-b-2 border-white"
+                : "hover:text-gray-800 dark:hover:text-gray-200 hover:border-white"
             } block md:inline-block px-4 py-2 md:p-0`}
           >
             Careers
           </Link>
-          <Link
-            to="/reservation"
-            className={`${
-              isActive("/reservation")
-                ? "text-gray-800 dark:text-gray-200 border-b-2 border-blue-500"
-                : "hover:text-gray-800 dark:hover:text-gray-200 hover:border-blue-500"
-            } block md:inline-block px-4 py-2 md:p-0`}
+          <a
+            href="https://www.opentable.ca/restref/client/?restref=1369162&lang=en-CA&ot_source=Restaurant%20website&corrid=5bf72732-61ae-4212-819f-e4966c7fa423"
+            className="block md:inline-block px-4 py-2 md:p-0 hover:text-gray-800 dark:hover:text-gray-200"
           >
             Reservation
-          </Link>
+          </a>
           <Link
             to="/egift-card"
             className={`${
               isActive("/egift-card")
-                ? "text-gray-800 dark:text-gray-200 border-b-2 border-blue-500"
-                : "hover:text-gray-800 dark:hover:text-gray-200 hover:border-blue-500"
+                ? "text-gray-800 dark:text-gray-200 border-b-2 border-white"
+                : "hover:text-gray-800 dark:hover:text-gray-200 hover:border-white"
             } block md:inline-block px-4 py-2 md:p-0`}
           >
             E-Gift Card
