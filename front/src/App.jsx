@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Routes,
   Route,
   useLocation,
@@ -18,7 +18,7 @@ import Manage from "./pages/Manage.jsx";
 
 const App = () => {
   return (
-    <Router basename="/sumoki">
+    <Router>
       <AppContent />
     </Router>
   );
@@ -26,8 +26,11 @@ const App = () => {
 
 const AppContent = () => {
   const location = useLocation();
-  const hideNavbarAndFooterRoutes = ["/menu"]; // Add paths where Navbar and Footer should be hidden
 
+  // Add paths where Navbar and Footer should be hidden
+  const hideNavbarAndFooterRoutes = ["/menu"];
+
+  // Check if the current route is in the "hide" list
   const shouldHideNavbarAndFooter = hideNavbarAndFooterRoutes.includes(
     location.pathname
   );
@@ -44,6 +47,8 @@ const AppContent = () => {
         <Route path="/create" element={<Create />} />
         <Route path="/update" element={<Update />} />
         <Route path="/manage" element={<Manage />} />
+        {/* Add a fallback for invalid routes */}
+        <Route path="*" element={<div>Page Not Found</div>} />
       </Routes>
       {!shouldHideNavbarAndFooter && <Footer />}
     </div>

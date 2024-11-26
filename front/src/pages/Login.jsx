@@ -2,8 +2,8 @@ import React from "react";
 
 const Login = () => {
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center">
-      <div className="bg-slate-900 p-8 rounded-lg shadow-md w-96">
+    <div className="min-h-screen bg-white flex items-center justify-center">
+      <div className="bg-zinc-900 p-8 rounded-lg shadow-md w-96">
         <h2 className="text-2xl font-bold text-center mb-6 text-white">
           Admin Login
         </h2>
