@@ -42,7 +42,7 @@ const Careers = () => {
             here and attaching your resume. You can also send us your resume to:
           </p>
           <a
-            href="mailto:careers@example.com"
+            href="sumokicorp@gmail.com"
             className="text-blue-400 font-medium hover:underline mt-2 block"
           >
             sumokicorp@gmail.com

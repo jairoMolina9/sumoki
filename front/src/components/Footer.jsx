@@ -56,7 +56,7 @@ function Footer() {
               <AiFillTwitterCircle size={25} />
             </a>
             <a
-              href="#"
+              href="https://www.instagram.com/sumoki_ca"
               className="block text-gray-300 transition-all duration-500 hover:text-indigo-400"
             >
               <AiFillInstagram size={25} />
@@ -76,10 +76,7 @@ function Footer() {
           </div>
           <span className="text-base text-gray-400 text-center block">
             ©
-            <a
-              href="https://pagedone.io/"
-              className="text-gray-300 hover:text-gray-100"
-            >
+            <a href="/" className="text-gray-300 hover:text-gray-100">
               {" "}
               Sumoki
             </a>{" "}
