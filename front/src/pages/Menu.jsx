@@ -74,8 +74,6 @@ export const Menu = () => {
         description={modalContent.description}
         price={modalContent.price}
       />
-
-      {/* <Footer /> */}
     </div>
   );
 };
