@@ -12,6 +12,9 @@ import Login from "./pages/Login.jsx";
 import { Menu } from "./pages/Menu.jsx";
 import Careers from "./pages/Careers.jsx";
 import Info from "./pages/Info.jsx";
+import Create from "./pages/Create.jsx";
+import Update from "./pages/Update.jsx";
+import Manage from "./pages/Manage.jsx";
 
 const App = () => {
   return (
@@ -38,6 +41,9 @@ const AppContent = () => {
         <Route path="/menu" element={<Menu />} />
         <Route path="/careers" element={<Careers />} />
         <Route path="/info" element={<Info />} />
+        <Route path="/create" element={<Create />} />
+        <Route path="/update" element={<Update />} />
+        <Route path="/manage" element={<Manage />} />
       </Routes>
       {!shouldHideNavbarAndFooter && <Footer />}
     </div>
