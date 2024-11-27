@@ -1,24 +1,23 @@
 import React, { useState } from "react";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import Card from "./components/Card";
-import Modal from "./components/Modal";
-import cardData from "./data.json";
-
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
 function App() {
-  const queryClient = useQueryClient(); // Initialize QueryClient
+  const queryClient = useQueryClient();
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalContent, setModalContent] = useState({});
-  const [expandedCategories, setExpandedCategories] = useState({});
-
-  const [selectedCategory, setSelectedCategory] = useState(null); // Track selected category
+  const [selectedCategory, setSelectedCategory] = useState(null);
   const [newCategoryName, setNewCategoryName] = useState("");
+  const [showItemForm, setShowItemForm] = useState(false); // Toggle form visibility
+  const [itemDetails, setItemDetails] = useState({
+    name: "",
+    price: "",
+    description: "",
+  });
+
+  const [successMessageVisible, setSuccessMessageVisible] = useState(false);
 
   const apiUrl = import.meta.env.VITE_API_URL;
 
+  // Fetch Categories
   const fetchCategories = async () => {
     const response = await fetch(`${apiUrl}/category`);
     if (!response.ok) {
@@ -36,7 +35,7 @@ function App() {
     queryFn: fetchCategories,
   });
 
-  // Create new category
+  // Mutation: Create New Category
   const createCategory = async (newCategory) => {
     const response = await fetch(`${apiUrl}/category`, {
       method: "POST",
@@ -45,31 +44,85 @@ function App() {
     });
     if (!response.ok) {
       const errorData = await response.json();
-      console.error("API Error:", errorData);
       throw new Error(errorData.error || "Failed to create category");
     }
     return response.json();
   };
 
-  const mutation = useMutation({
+  const categoryMutation = useMutation({
     mutationFn: createCategory,
     onSuccess: () => {
       queryClient.invalidateQueries(["fetchCategories"]);
+      setNewCategoryName(""); // Clear input on success
+    },
+  });
+
+  // Mutation: Add Item to Category
+  const addItemToCategory = async (item) => {
+    const response = await fetch(
+      `${apiUrl}/category/${item.categoryId}/items`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(item),
+      }
+    );
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.error || "Failed to add item");
+    }
+    return response.json();
+  };
+
+  const itemMutation = useMutation({
+    mutationFn: addItemToCategory,
+    onSuccess: (data) => {
+      queryClient.invalidateQueries(["fetchCategories"]);
+      setSelectedCategory((prev) => ({
+        ...prev,
+        items: [...(prev.items || []), ...data],
+      }));
+      setItemDetails({ name: "", price: "", description: "" }); // Reset form
+      setShowItemForm(false); // Hide form after success
+      setSuccessMessageVisible(true); // Show success message
     },
   });
 
   const handleCreateCategory = () => {
     if (!newCategoryName.trim()) return;
 
-    mutation.mutate(
-      { name: newCategoryName },
+    categoryMutation.mutate({ name: newCategoryName });
+  };
+
+  const handleAddItem = () => {
+    if (!itemDetails.name.trim() || !itemDetails.price.trim()) {
+      alert("Name and price are required!");
+      return;
+    }
+
+    const items = [
       {
-        onError: (error) => {
-          console.error("Error creating category:", error.message);
-        },
-        onSuccess: () => {
-          setNewCategoryName(""); // Clear input on success
-          queryClient.invalidateQueries(["fetchCategories"]); // Refetch categories
+        name: itemDetails.name,
+        price: Number(itemDetails.price),
+        description: itemDetails.description,
+      },
+    ];
+
+    itemMutation.mutate(
+      {
+        items,
+        categoryId: selectedCategory._id,
+      },
+      {
+        onSuccess: async () => {
+          // Fetch the updated category with populated items
+          const response = await fetch(
+            `${apiUrl}/category/${selectedCategory._id}/items`
+          );
+          const updatedCategory = await response.json();
+
+          setSelectedCategory(updatedCategory); // Update state with the populated category
+          setItemDetails({ name: "", price: "", description: "" }); // Reset form
         },
       }
     );
@@ -78,55 +131,62 @@ function App() {
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
-  //
-  //   const handleCardClick = (item) => {
-  //     setModalContent(item);
-  //     setIsModalOpen(true);
-  //   };
-
-  //   const closeModal = () => {
-  //     setIsModalOpen(false);
-  //     setModalContent({});
-  //   };
-
-  //   const toggleCategory = (category) => {
-  //     setExpandedCategories((prevState) => ({
-  //       ...prevState,
-  //       [category]: !prevState[category],
-  //     }));
-  //   };
-
   return (
     <div>
-      <h1>Dropdown Example</h1>
-      {/* Create Category Form */}
+      <h1>Category and Item Management</h1>
+
+      {/* Create Category */}
       <div>
-        <input 
-          style={{background: "gray"}}
+        <input
           type="text"
           placeholder="Enter category name"
           value={newCategoryName}
           onChange={(e) => setNewCategoryName(e.target.value)}
         />
-        <button style={{background: "blue"}} onClick={handleCreateCategory} disabled={mutation.isLoading}>
-          {mutation.isLoading ? "Creating..." : "Add Category"}
+        <button
+          onClick={handleCreateCategory}
+          disabled={categoryMutation.isLoading}
+        >
+          {categoryMutation.isLoading ? "Creating..." : "Add Category"}
         </button>
-        {mutation.isError && (
+        {categoryMutation.isError && (
           <p style={{ color: "red" }}>
             Error creating category:{" "}
-            {mutation.error?.message || "Unknown error"}
+            {categoryMutation.error?.message || "Unknown error"}
           </p>
         )}
-          {mutation.isSuccess && (
-    <p style={{ color: "green" }}>Category created successfully!</p>
-  )}
+        {categoryMutation.isSuccess && (
+          <p style={{ color: "green" }}>Category created successfully!</p>
+        )}
       </div>
 
-      <select style={{background: "orange"}}
-        onChange={(e) => {
+      {/* Category Dropdown */}
+      <select
+        onChange={async (e) => {
           const categoryId = e.target.value;
-          const category = categories.find((cat) => cat._id === categoryId);
-          setSelectedCategory(category);
+
+          if (!categoryId) {
+            setSelectedCategory(null);
+            setSuccessMessageVisible(false); // Hide success message
+            return;
+          }
+
+          try {
+            // Fetch the selected category with populated items
+            const response = await fetch(
+              `${apiUrl}/category/${categoryId}/items`
+            );
+            if (!response.ok) {
+              throw new Error("Failed to fetch category details");
+            }
+
+            const category = await response.json(); // This should include populated items
+            setSelectedCategory(category); // Update state with the populated category
+            setShowItemForm(false); // Reset form visibility on category change
+            setSuccessMessageVisible(false); // Hide success message
+          } catch (error) {
+            console.error("Error fetching selected category:", error);
+          }
         }}
       >
         <option value="">-- Select a Category --</option>
@@ -137,63 +197,69 @@ function App() {
         ))}
       </select>
 
+      {/* Add Item Button */}
+      {selectedCategory && (
+        <button onClick={() => setShowItemForm(true)}>Add Item</button>
+      )}
+
+      {/* Form for Adding Item */}
+      {showItemForm && (
+        <div>
+          <h2>Adding Item to: {selectedCategory.name}</h2>
+          <input
+            type="text"
+            placeholder="Name"
+            value={itemDetails.name}
+            onChange={(e) =>
+              setItemDetails({ ...itemDetails, name: e.target.value })
+            }
+          />
+          <input
+            type="number"
+            placeholder="Price"
+            value={itemDetails.price}
+            onChange={(e) =>
+              setItemDetails({ ...itemDetails, price: e.target.value })
+            }
+          />
+          <textarea
+            placeholder="Description"
+            value={itemDetails.description}
+            onChange={(e) =>
+              setItemDetails({ ...itemDetails, description: e.target.value })
+            }
+          ></textarea>
+          <button onClick={handleAddItem} disabled={itemMutation.isLoading}>
+            {itemMutation.isLoading ? "Adding Item..." : "Submit Item"}
+          </button>
+        </div>
+      )}
+      {itemMutation.isError && (
+        <p style={{ color: "red" }}>
+          Error adding item: {itemMutation.error?.message || "Unknown error"}
+        </p>
+      )}
+      {successMessageVisible && (
+        <p style={{ color: "green" }}>Item added successfully!</p>
+      )}
+
+      {/* Display Category Items */}
       {selectedCategory && (
         <div>
           <h2>Items in {selectedCategory.name}</h2>
-          <ul>
-            {selectedCategory.items.map((item) => (
-              <li key={item._id || `item-${Math.random()}`}>
-                {item.name} - ${item.price}
-              </li>
-            ))}
-          </ul>
+          {selectedCategory.items && selectedCategory.items.length > 0 ? (
+            <ul>
+              {selectedCategory.items.map((item) => (
+                <li key={item._id}>
+                  {item.name} - ${item.price}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>Category empty</p>
+          )}
         </div>
       )}
-      {/* <div className="w-full max-w-screen-lg px-4 mt-24">
-        {Object.entries(cardData).map(([category, items]) => {
-          const isExpanded = expandedCategories[category];
-          const visibleItems = isExpanded ? items : items.slice(0, 4);
-
-          return (
-            <div key={category} className="mb-12">
-              <h1 className="text-2xl font-bold mb-6 underline">{category}</h1>
-              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 justify-items-center">
-                {visibleItems.map((item) => (
-                  <Card
-                    key={item.id}
-                    img={item.img}
-                    title={item.title}
-                    description={item.description}
-                    price={item.price}
-                    onClick={() => handleCardClick(item)}
-                  />
-                ))}
-              </div>
-              {items.length > 4 && (
-                <div className="flex justify-center mt-4">
-                  <button
-                    className="text-blue-500 underline"
-                    onClick={() => toggleCategory(category)}
-                  >
-                    {isExpanded ? "Show Less" : "Load More"}
-                  </button>
-                </div>
-              )}
-            </div>
-          );
-        })}
-      </div> */}
-      {/* 
-      <Modal
-        isOpen={isModalOpen}
-        onClose={closeModal}
-        img={modalContent.img}
-        title={modalContent.title}
-        description={modalContent.description}
-        price={modalContent.price}
-      /> */}
-
-      {/* <Footer /> */}
     </div>
   );
 }

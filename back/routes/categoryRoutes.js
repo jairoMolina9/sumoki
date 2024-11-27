@@ -57,7 +57,22 @@ router.post('/', async (req, res) => {
 
 router.post('/:categoryId/items', async (req, res) => {
   const { categoryId } = req.params;
-  const { items } = req.body; // Expect an array of items
+  const { items } = req.body;
+
+  // Check if items is a non-empty array
+  if (!Array.isArray(items) || items.length === 0) {
+    return res.status(400).json({ error: 'Items must be a non-empty array' });
+  }
+
+  // Validate each item
+  for (const item of items) {
+    if (!item.name || typeof item.name !== 'string' || !item.name.trim()) {
+      return res.status(400).json({ error: 'Each item must have a valid name' });
+    }
+    if (!item.price || typeof item.price !== 'number' || item.price <= 0) {
+      return res.status(400).json({ error: 'Each item must have a valid price' });
+    }
+  }
 
   try {
     const category = await Category.findById(categoryId);
@@ -65,17 +80,22 @@ router.post('/:categoryId/items', async (req, res) => {
       return res.status(404).json({ error: 'Category not found' });
     }
 
+    // Insert multiple items
     const menuItems = await MenuItem.insertMany(
-      items.map(item => ({ ...item, category: categoryId }))
+      items.map((item) => ({ ...item, category: categoryId }))
     );
 
-    category.items.push(...menuItems.map(item => item._id));
+    // Update the category with the new items
+    category.items.push(...menuItems.map((item) => item._id));
     await category.save();
 
-    res.status(201).json(menuItems);
+    res.status(201).json(menuItems); // Return the created items
   } catch (err) {
-    res.status(500).send('Server Error');
+    console.error('Error adding items:', err);
+    res.status(500).json({ error: 'Server Error' });
   }
 });
+
+
 
 module.exports = router;
