@@ -21,7 +21,7 @@ function App() {
   const fetchCategories = async () => {
     const response = await fetch(`${apiUrl}/category`);
     if (!response.ok) {
-      throw new Error("Network response was not ok");
+      throw new Error("Network response was not ok2");
     }
     return response.json();
   };
