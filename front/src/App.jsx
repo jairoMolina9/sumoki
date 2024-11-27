@@ -1,83 +1,58 @@
-import React, { useState } from "react";
+import React from "react";
+import {
+  HashRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Card from "./components/Card";
-import Modal from "./components/Modal";
-import cardData from "./data.json";
+import Home from "./pages/Home.jsx";
+import Login from "./pages/Login.jsx";
+import { Menu } from "./pages/Menu.jsx";
+import Careers from "./pages/Careers.jsx";
+import Info from "./pages/Info.jsx";
+import Create from "./pages/Create.jsx";
+import Update from "./pages/Update.jsx";
+import Manage from "./pages/Manage.jsx";
 
-function App() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalContent, setModalContent] = useState({});
-  const [expandedCategories, setExpandedCategories] = useState({});
+const App = () => {
+  return (
+    <Router>
+      <AppContent />
+    </Router>
+  );
+};
 
-  const handleCardClick = (item) => {
-    setModalContent(item);
-    setIsModalOpen(true);
-  };
+const AppContent = () => {
+  const location = useLocation();
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setModalContent({});
-  };
+  // Add paths where Navbar and Footer should be hidden
+  const hideNavbarAndFooterRoutes = ["/menu"];
 
-  const toggleCategory = (category) => {
-    setExpandedCategories((prevState) => ({
-      ...prevState,
-      [category]: !prevState[category],
-    }));
-  };
+  // Check if the current route is in the "hide" list
+  const shouldHideNavbarAndFooter = hideNavbarAndFooterRoutes.includes(
+    location.pathname
+  );
 
   return (
-    <div className="flex flex-col items-center min-h-screen">
-      <Navbar />
-
-      <div className="w-full max-w-screen-lg px-4 mt-24">
-        {Object.entries(cardData).map(([category, items]) => {
-          const isExpanded = expandedCategories[category];
-          const visibleItems = isExpanded ? items : items.slice(0, 4);
-
-          return (
-            <div key={category} className="mb-12">
-              <h1 className="text-2xl font-bold mb-6 underline">{category}</h1>
-              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 justify-items-center">
-                {visibleItems.map((item) => (
-                  <Card
-                    key={item.id}
-                    img={item.img}
-                    title={item.title}
-                    description={item.description}
-                    price={item.price}
-                    onClick={() => handleCardClick(item)}
-                  />
-                ))}
-              </div>
-              {items.length > 4 && (
-                <div className="flex justify-center mt-4">
-                  <button
-                    className="text-blue-500 underline"
-                    onClick={() => toggleCategory(category)}
-                  >
-                    {isExpanded ? "Show Less" : "Load More"}
-                  </button>
-                </div>
-              )}
-            </div>
-          );
-        })}
-      </div>
-
-      <Modal
-        isOpen={isModalOpen}
-        onClose={closeModal}
-        img={modalContent.img}
-        title={modalContent.title}
-        description={modalContent.description}
-        price={modalContent.price}
-      />
-
-      {/* <Footer /> */}
+    <div>
+      {!shouldHideNavbarAndFooter && <Navbar />}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/menu" element={<Menu />} />
+        <Route path="/careers" element={<Careers />} />
+        <Route path="/info" element={<Info />} />
+        <Route path="/create" element={<Create />} />
+        <Route path="/update" element={<Update />} />
+        <Route path="/manage" element={<Manage />} />
+        {/* Add a fallback for invalid routes */}
+        <Route path="*" element={<div>Page Not Found</div>} />
+      </Routes>
+      {!shouldHideNavbarAndFooter && <Footer />}
     </div>
   );
-}
+};
 
 export default App;

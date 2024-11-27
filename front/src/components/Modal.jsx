@@ -5,10 +5,10 @@ function Modal({ isOpen, onClose, img, title, description, price }) {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="relative bg-white rounded-lg shadow-lg p-6 w-80 sm:w-96">
+      <div className="relative bg-zinc-900 rounded-lg shadow-lg p-6 w-80 sm:w-96">
         {/* Close Button */}
         <button
-          className="absolute top-3 right-3 text-gray-400 hover:text-gray-700 focus:outline-none text-2xl"
+          className="absolute top-3 right-3 focus:outline-none text-2xl"
           onClick={onClose}
           aria-label="Close Modal"
         >
@@ -21,9 +21,9 @@ function Modal({ isOpen, onClose, img, title, description, price }) {
           <div className="overflow-hidden bg-gray-100 w-full h-64 flex items-center justify-center mb-4 rounded-lg">
             <img src={img} alt={title} className="w-full h-full object-cover" />
           </div>
-          <h3 className="text-lg font-bold mb-2">{title}</h3>
-          <p className="text-gray-500 text-sm mb-4">{description}</p>
-          <p className="text-xl font-bold">{price}</p>
+          <h3 className="text-lg font-bold mb-2 text-white">{title}</h3>
+          <p className="text-white text-sm mb-4">{description}</p>
+          <p className="text-xl font-bold text-white">{price}</p>
         </div>
       </div>
     </div>
